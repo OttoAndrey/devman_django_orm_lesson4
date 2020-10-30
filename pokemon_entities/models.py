@@ -3,8 +3,10 @@ from django.db import models
 
 class Pokemon(models.Model):
     title = models.CharField('название', max_length=200,)
+    title_en = models.CharField('название на англ.', max_length=200, blank=True,)
+    title_jp = models.CharField('название на яп.', max_length=200, blank=True,)
     image = models.ImageField('изображение',)
-    description = models.TextField('описание', blank=True)
+    description = models.TextField('описание', blank=True,)
 
     def __str__(self):
         return self.title

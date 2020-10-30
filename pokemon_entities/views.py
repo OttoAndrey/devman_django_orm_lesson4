@@ -51,6 +51,8 @@ def show_pokemon(request, pokemon_id):
     pokemon = Pokemon.objects.get(pk=pokemon_id)
     pokemon_data = {
         'title_ru': pokemon.title,
+        'title_en': pokemon.title_en,
+        'title_jp': pokemon.title_jp,
         'img_url': pokemon.image.url,
         'description': pokemon.description,
     }
