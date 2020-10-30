@@ -52,6 +52,7 @@ def show_pokemon(request, pokemon_id):
     pokemon_data = {
         'title_ru': pokemon.title,
         'img_url': pokemon.image.url,
+        'description': pokemon.description,
     }
 
     for pokemon_entity in pokemon.entities.all():
