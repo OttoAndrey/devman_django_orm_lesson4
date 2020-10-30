@@ -8,7 +8,7 @@ class Pokemon(models.Model):
     image = models.ImageField('изображение',)
     description = models.TextField('описание', blank=True,)
     previous_evolution = models.ForeignKey('self', on_delete=models.SET_NULL, null=True,
-                                           default=None, verbose_name='Из кого эволюционировал',
+                                           blank=True, verbose_name='Из кого эволюционировал',
                                            related_name='next_evolutions')
 
     def __str__(self):
@@ -20,10 +20,10 @@ class PokemonEntity(models.Model):
     lon = models.FloatField('долгота',)
     pokemon = models.ForeignKey(Pokemon, on_delete=models.CASCADE,
                                 verbose_name='Покемон', related_name='entities',)
-    appeared_at = models.DateTimeField('появление',)
-    disappeared_at = models.DateTimeField('исчезновение',)
-    level = models.IntegerField('уровень',)
-    health = models.IntegerField('здоровье',)
-    strength = models.IntegerField('атака',)
-    defence = models.IntegerField('защита',)
-    stamina = models.IntegerField('выносливость',)
+    appeared_at = models.DateTimeField('появление', blank=True, null=True,)
+    disappeared_at = models.DateTimeField('исчезновение', blank=True, null=True,)
+    level = models.IntegerField('уровень', blank=True, null=True,)
+    health = models.IntegerField('здоровье', blank=True, null=True,)
+    strength = models.IntegerField('атака', blank=True, null=True,)
+    defence = models.IntegerField('защита', blank=True, null=True,)
+    stamina = models.IntegerField('выносливость', blank=True, null=True,)
