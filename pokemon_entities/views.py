@@ -79,6 +79,15 @@ def show_pokemon(request, pokemon_id):
             "img_url": pokemon.next_evolutions.first().image.url,
         }
 
+    pokemon_element_types =[]
+    if pokemon.element_type.all():
+        for element_type in pokemon.element_type.all():
+            pokemon_element_types.append({
+                'title': element_type.title,
+                'img': element_type.image.url,
+            })
+        pokemon_data['element_type'] = pokemon_element_types
+
     for pokemon_entity in pokemon.entities.all():
         add_pokemon(
             folium_map, pokemon_entity.lat, pokemon_entity.lon,
