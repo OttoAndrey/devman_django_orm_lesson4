@@ -1,5 +1,5 @@
 import folium
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 
 from pokemon_entities.models import Pokemon, PokemonEntity
 
@@ -55,7 +55,8 @@ def show_all_pokemons(request):
 def show_pokemon(request, pokemon_id):
     folium_map = folium.Map(location=MOSCOW_CENTER, zoom_start=12)
 
-    pokemon = Pokemon.objects.get(pk=pokemon_id)
+    pokemon = get_object_or_404(Pokemon, pk=pokemon_id)
+
     pokemon_data = {
         'title_ru': pokemon.title,
         'title_en': pokemon.title_en,
