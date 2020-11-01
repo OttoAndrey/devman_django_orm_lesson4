@@ -89,9 +89,17 @@ def show_pokemon(request, pokemon_id):
         pokemon_data['element_type'] = pokemon_element_types
 
     for pokemon_entity in pokemon.entities.all():
+        pokemon_stats = f"""
+                    level: {pokemon_entity.level}
+                    health: {pokemon_entity.health}
+                    strength: {pokemon_entity.strength}
+                    defence: {pokemon_entity.defence}
+                    stamina: {pokemon_entity.stamina}
+                """
+
         add_pokemon(
             folium_map, pokemon_entity.lat, pokemon_entity.lon,
-            pokemon_entity.pokemon.title, request.build_absolute_uri(pokemon_entity.pokemon.image.url))
+            pokemon_entity.pokemon.title, pokemon_stats, request.build_absolute_uri(pokemon_entity.pokemon.image.url))
 
     return render(request, "pokemon.html", context={'map': folium_map._repr_html_(),
                                                     'pokemon': pokemon_data})
