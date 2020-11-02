@@ -79,12 +79,13 @@ def show_pokemon(request, pokemon_id):
             "img_url": pokemon.next_evolutions.first().image.url,
         }
 
-    pokemon_element_types =[]
+    pokemon_element_types = []
     if pokemon.element_type.all():
         for element_type in pokemon.element_type.all():
             pokemon_element_types.append({
                 'title': element_type.title,
                 'img': element_type.image.url,
+                'strong_against': [strong_against.title for strong_against in element_type.strong_against.all()]
             })
         pokemon_data['element_type'] = pokemon_element_types
 
