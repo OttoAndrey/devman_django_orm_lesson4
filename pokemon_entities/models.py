@@ -3,8 +3,8 @@ from django.db import models
 
 class PokemonElementType(models.Model):
     title = models.CharField('название', max_length=50,)
-    image = models.ImageField('изображение', blank=True, null=True,)
-    strong_against = models.ManyToManyField('self', symmetrical=False,
+    image = models.ImageField('изображение',)
+    strong_against = models.ManyToManyField('self', symmetrical=False, blank=True,
                                             verbose_name='Силён против',)
 
     def __str__(self):
@@ -17,7 +17,7 @@ class Pokemon(models.Model):
     title_jp = models.CharField('название на яп.', max_length=200, blank=True,)
     image = models.ImageField('изображение',)
     description = models.TextField('описание', blank=True,)
-    element_type = models.ManyToManyField(PokemonElementType)
+    element_type = models.ManyToManyField(PokemonElementType, blank=True)
     previous_evolution = models.ForeignKey('self', on_delete=models.SET_NULL, null=True,
                                            blank=True, verbose_name='Из кого эволюционировал',
                                            related_name='next_evolutions')

@@ -13,7 +13,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='pokemon',
             name='image',
-            field=models.ImageField(default='https://upload.wikimedia.org/wikipedia/ru/c/ca/%D0%91%D1%83%D0%BB%D1%8C%D0%B1%D0%B0%D0%B7%D0%B0%D0%B2%D1%80.png', upload_to='', verbose_name='изображение'),
+            field=models.ImageField(default='pokeball.jpg', upload_to='', verbose_name='изображение'),
             preserve_default=False,
         ),
     ]
